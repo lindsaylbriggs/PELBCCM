@@ -75,6 +75,28 @@ flattening. Each image was then cropped to a set size to ensure uniformity.
 
 ## 5. References 
 
+## Appendix
+
 Fu, Y., X. Mi, Z. Han, W. Zhang, Q. Liu, X. Gu, and T. Yu, 2023: A machine-learning-based study on all-day cloud classification using Himawari-8 infrared data. *Remote Sens.*, 15, 5630, https://doi.org/10.3390/rs15245630.
 
 # Requirements Document
+
+| PELBCCM-01  | `   
+|---------|------------| 
+| Priority | Level |
+| Sprint | 1 |
+| Assigned To | Name |
+| User Story   |  |                                                                                                                                       | 
+| Requirements | |
+| | 1. |
+| | 2.|
+| | 3. |
+| | 4. |
+| Acceptance Criteria | |
+| | 1. |
+| | 2. |
+| | 3. . |
+| | 4. .|
+| Unit Test | | 
+```
+```
