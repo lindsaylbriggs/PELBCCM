@@ -4,7 +4,7 @@ Submit a link to your group project code on github. I am expecting functions wit
 
 Your "README" file should include your project summary, fixed rough draft, and a description of the notebooks or python scripts that are included on your github page. You can use this page as an example: SVRIMG/README.md at master · ahaberlie/SVRIMG · GitHub. If you click on "raw", it will show you the markdown code and how to embed images, make headers, etc. You can copy and paste aspects of this readme and modify the text and use your own figures / demonstration pictures (I would suggest making an 'img' folder in your github project: SVRIMG/img at master · ahaberlie/SVRIMG · GitHub).
 
-# CMM
+# Machine Learning Cloud Classification using Satellite Imagery 
 
 Authors: Paul Eldridge and Lindsay Briggs 
 
@@ -70,6 +70,13 @@ peering into space and not at the earth. These values were masked over to allow 
 flattening. Each image was then cropped to a set size to ensure uniformity.
 
 ## 3. Methodology
+To download data, the NOAA s3 bucket was used on AWS. This bucket is part of the Registry of Open Data on AWS and can be accessed anonymously at no cost to the user. See https://registry.opendata.aws/ for more information. CONUS images were used as opposed to full disk images due to the file size. 
+
+GOES images are stored as netCDF files with each advanced baseline imager (ABI) band stored in a different file for a given time. Band 13 (longwave infrared radiation) is the specific ABI band of interest to us. These files also contain data about the position of the satellite at the time the image was taken. This information was then used to convert the “x” and “y” coordinates of the image into degrees of latitude and longitude to flatten the image. Each image also contains “nan” data points – these occur at places where the sensor is peering into space and not at the earth. These values were masked over to allow for image flattening. Each image was then cropped to a set size to ensure uniformity. 
+
+K-Nearest Neighbors 
+
+Random Forest 
 
 ## 4. results
 
