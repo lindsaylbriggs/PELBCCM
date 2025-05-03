@@ -70,9 +70,13 @@ peering into space and not at the earth. These values were masked over to allow 
 flattening. Each image was then cropped to a set size to ensure uniformity.
 
 ## 3. Methodology
-To download data, the NOAA s3 bucket was used on AWS. This bucket is part of the Registry of Open Data on AWS and can be accessed anonymously at no cost to the user. See https://registry.opendata.aws/ for more information. CONUS images were used as opposed to full disk images due to the file size. 
+1. Data Collection
 
+GOES Satellite imagery was used, specifically band (). The data was accessed through the NOAA s3 bucket on AWS. This bucket is part of the Registry of Open Data on AWS and can be accessed anonymously at no cost to the user. See https://registry.opendata.aws/ for more information. CONUS images were used as opposed to full disk images due to the file size. 
 GOES images are stored as netCDF files with each advanced baseline imager (ABI) band stored in a different file for a given time. Band 13 (longwave infrared radiation) is the specific ABI band of interest to us. These files also contain data about the position of the satellite at the time the image was taken. This information was then used to convert the “x” and “y” coordinates of the image into degrees of latitude and longitude to flatten the image. Each image also contains “nan” data points – these occur at places where the sensor is peering into space and not at the earth. These values were masked over to allow for image flattening. Each image was then cropped to a set size to ensure uniformity. 
+3. Preprocessing
+4. Feature Engineering (?)
+5.  Model Selection
 
 K-Nearest Neighbors 
 
