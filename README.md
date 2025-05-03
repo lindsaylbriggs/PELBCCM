@@ -69,8 +69,10 @@ the image. Each image also contains “nan” data points – these occur at pla
 peering into space and not at the earth. These values were masked over to allow for image 
 flattening. Each image was then cropped to a set size to ensure uniformity.
 
-## 3.
+## 3. Methodology
 
-## 4. 
+## 4. results
 
 ## 5. References 
+
+# Requirements Document
