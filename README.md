@@ -125,25 +125,6 @@ Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learni
 | | 4. .|
 | Unit Test | | 
 ```
-```
-| PELBCCM-01  | `   
-|---------|------------| 
-| Priority | Level |
-| Sprint | 1 |
-| Assigned To | Name |
-| User Story   |  |                                                                                                                                       | 
-| Requirements | |
-| | 1. |
-| | 2.|
-| | 3. |
-| | 4. |
-| Acceptance Criteria | |
-| | 1. |
-| | 2. |
-| | 3. . |
-| | 4. .|
-| Unit Test | | 
-```
 import numpy as np
 import matplotlib.pyplot as plt
 import xarray as xr
@@ -156,6 +137,9 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 import s3fs
+
+from google.colab import drive
+drive.mount('/content/drive')
 
 def download_files(number_of_files):
     product = 'ABI-L2-MCMIPC'
@@ -205,5 +189,25 @@ def download_files(number_of_files):
             print("Max attempts reached. Ending download.")
 
     print(f'Download complete: {num_files} files in {download_dir}')
+```
+| PELBCCM-01  | `   
+|---------|------------| 
+| Priority | Level |
+| Sprint | 1 |
+| Assigned To | Name |
+| User Story   |  |                                                                                                                                       | 
+| Requirements | |
+| | 1. |
+| | 2.|
+| | 3. |
+| | 4. |
+| Acceptance Criteria | |
+| | 1. |
+| | 2. |
+| | 3. . |
+| | 4. .|
+| Unit Test | | 
+```
+
 
 ```
