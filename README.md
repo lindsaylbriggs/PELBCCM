@@ -70,25 +70,40 @@ peering into space and not at the earth. These values were masked over to allow 
 flattening. Each image was then cropped to a set size to ensure uniformity.
 
 ## 3. Methodology
-1. Data Collection
+1.  Data Collection
 
 GOES Satellite imagery was used, specifically band (). The data was accessed through the NOAA s3 bucket on AWS. This bucket is part of the Registry of Open Data on AWS and can be accessed anonymously at no cost to the user. See https://registry.opendata.aws/ for more information. CONUS images were used as opposed to full disk images due to the file size. 
-GOES images are stored as netCDF files with each advanced baseline imager (ABI) band stored in a different file for a given time. Band 13 (longwave infrared radiation) is the specific ABI band of interest to us. These files also contain data about the position of the satellite at the time the image was taken. This information was then used to convert the “x” and “y” coordinates of the image into degrees of latitude and longitude to flatten the image. Each image also contains “nan” data points – these occur at places where the sensor is peering into space and not at the earth. These values were masked over to allow for image flattening. Each image was then cropped to a set size to ensure uniformity. 
-3. Preprocessing
-4. Feature Engineering (?)
-5.  Model Selection
 
+GOES images are stored as netCDF files with each advanced baseline imager (ABI) band stored in a different file for a given time. Band 13 (longwave infrared radiation) is the specific ABI band of interest to us. These files also contain data about the position of the satellite at the time the image was taken. This information was then used to convert the “x” and “y” coordinates of the image into degrees of latitude and longitude to flatten the image. Each image also contains “nan” data points – these occur at places where the sensor is peering into space and not at the earth. These values were masked over to allow for image flattening. Each image was then cropped to a set size to ensure uniformity.
+
+2.  Preprocessing
+
+NaNs existed within the raw data due to the angle of the satellite images. To mitigate, cloud features were extracted on colab using a temperature mask. Then a loop was used to save each individual cloud feature into a folder on a google drive to be used to train the model. These extracted features were then converted into a list of images using Pandas which is used to label each image as either Cumulus, Stratus or Cirrus. 
+
+
+3.  Feature Engineering (?)
+
+4.  Model Selection
+Two machine learning algorithms were used: K-Nearest Neighbors (KNN) and Random Forest (RF). RF has been shown to have strong performance in meteorological classifications (Gensini et al. 2021). 
 K-Nearest Neighbors 
 
 Random Forest 
+
+5.  Training and Validation
+
+6.  Testing and Evaluation
+
+
 
 ## 4. results
 
 ## 5. References 
 
-## Appendix
 
 Fu, Y., X. Mi, Z. Han, W. Zhang, Q. Liu, X. Gu, and T. Yu, 2023: A machine-learning-based study on all-day cloud classification using Himawari-8 infrared data. *Remote Sens.*, 15, 5630, https://doi.org/10.3390/rs15245630.
+Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learning Classification of Significant Tornadoes and Hail in the United States Using ERA5 Proximity Soundings. Wea. Forecasting, 36, 2143–2160, https://doi.org/10.1175/WAF-D-21-0056.1.
+
+## Appendix 
 
 # Requirements Document
 
