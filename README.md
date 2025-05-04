@@ -78,7 +78,7 @@ GOES images are stored as netCDF files with each advanced baseline imager (ABI) 
 
 2.  Preprocessing
 
-NaNs existed within the raw data due to the angle of the satellite images. To mitigate, cloud features were extracted on colab using a temperature mask. Then a loop was used to save each individual cloud feature into a folder on a google drive to be used to train the model. These extracted features were then converted into a list of images using Pandas which is used to label each image as either Cumulus, Stratus or Cirrus. 
+NaNs existed within the raw data due to the angle of the satellite images. To mitigate, cloud features were extracted on colab using a temperature mask. Then a loop was used to save each individual cloud feature into a folder on a google drive to be used to train the model. These extracted features were then converted into a list of images using Panda, used to label each image as either Cumulus, Stratus, or Cirrus. 
 
 
 3.  Feature Engineering (?)
@@ -107,6 +107,25 @@ Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learni
 
 # Requirements Document
 
+| PELBCCM-01  | Image Downloading   
+|---------|------------| 
+| Priority | High |
+| Sprint | 1 |
+| Assigned To | Paul |
+| User Story   |  |                                                                                                                                       | 
+| Requirements | |
+| | 1. |
+| | 2.|
+| | 3. |
+| | 4. |
+| Acceptance Criteria | |
+| | 1. |
+| | 2. |
+| | 3. . |
+| | 4. .|
+| Unit Test | | 
+```
+```
 | PELBCCM-01  | `   
 |---------|------------| 
 | Priority | Level |
@@ -125,4 +144,66 @@ Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learni
 | | 4. .|
 | Unit Test | | 
 ```
+import numpy as np
+import matplotlib.pyplot as plt
+import xarray as xr
+import pandas as pd
+from matplotlib import colormaps as cm
+from scipy import ndimage
+import matplotlib.gridspec as gridspec
+import os
+!pip install s3fs
+import warnings
+warnings.filterwarnings('ignore')
+import s3fs
+
+def download_files(number_of_files):
+    product = 'ABI-L2-MCMIPC'
+    satellite = 'goes16'
+    download_dir = '/content/drive/MyDrive/CCM/Datasets'
+
+    # Check filepath:
+    if not os.path.isdir(download_dir):
+        os.makedirs(download_dir)
+
+    num_files = 0
+    max_attempts = 100
+    attempts = 0
+
+    fs = s3fs.S3FileSystem(anon= True)
+
+    while num_files < number_of_files and attempts < max_attempts:
+        attempts += 1
+
+        year = np.random.randint(low= 2018, high= 2024)
+        day = np.random.randint(low= 1, high= 366)
+        hour= np.random.randint(low= 0, high= 23)
+
+        s3_path = f'noaa-{satellite}/{product}/{year}/{day}/{hour}/'
+
+        try:
+
+            files = fs.ls(s3_path)
+            if not files:
+                continue
+
+            file_to_download = np.random.choice(files)
+            s3_file_path = f's3://{file_to_download}'
+            local_file_path = os.path.join(download_dir, os.path.basename(file_to_download))
+
+            print(f'Downloading {file_to_download}...')
+            fs.get(s3_file_path, local_file_path)
+            print('Success!')
+
+            num_files = len(next(os.walk(download_dir))[2])
+
+        except Exception as e:
+            print(f'Failed to download from {s3_path}: {e}')
+            continue
+
+        if attempts >= max_attempts:
+            print("Max attempts reached. Ending download.")
+
+    print(f'Download complete: {num_files} files in {download_dir}')
+
 ```
