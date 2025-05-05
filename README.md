@@ -90,6 +90,7 @@ Each dataset was saved to a folder in Google Drive. In total, 100 datasets were 
 2.  Preprocessing
 
 Each satellite image can be viewed by accessing a certain band and using ```matplotlib```'s ```imshow()``` to view. For example, looking at a random ABI band 13 image yields:
+
 ![alt text](Figures/figure_2.png)
 >Figure 2. CONUS ABI band 13 image.
 
