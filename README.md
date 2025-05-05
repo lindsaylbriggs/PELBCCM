@@ -259,22 +259,20 @@ WMO, 2017: Definitions of clouds. *International Cloud Atlas*, World Meteorologi
 | Acceptance Criteria | |
 | Unit Test | | 
 
-| PELBCCM-01  | Image Downloading   
+| PELBCCM-02  | Image Downloading   
 |---------|------------| 
 | Priority | High |
 | Sprint | 1 |
 | Assigned To | Paul |
 | User Story   |  |                                                                                                                                       | 
 | Requirements | |
-| | 1. |
-| | 2.|
-| | 3. |
-| | 4. |
+| | 1.The function selects a random timestamp (year, day-of-year, hour) from the GOES-16 dataset between 2018 and 2023. |
+| | 2.It checks for available .nc files in the selected S3 path. |
+| | 3. The process continues until the desired number of files is downloaded or a maximum number of attempts is reached.|
 | Acceptance Criteria | |
-| | 1. |
-| | 2. |
-| | 3. . |
-| | 4. .|
+| | 1. The function downloads the requested number of files or stops after 100 failed attempts.|
+| | 2. Each successful download is printed in the console for verification.|
+| | 3.he function handles and prints exceptions when files cannot be retrieved from S3.|
 | Unit Test | | 
 ```
 import numpy as np
@@ -342,7 +340,7 @@ def download_files(number_of_files):
 
     print(f'Download complete: {num_files} files in {download_dir}')
 ```
-| PELBCCM-01  | Save Satellite Cloud Features as PNG Images   
+| PELBCCM-03  | Save Satellite Cloud Features as PNG Images   
 |---------|------------| 
 | Priority Level:| Medium |
 | Sprint | 1 |
@@ -386,7 +384,7 @@ def save_features(download_dir, output_folder):
 
 ```
 
-| PELBCCM-01  | The user can view the image(s) if necessary`   
+| PELBCCM-04  | The user can view the image(s) if necessary`   
 |---------|------------| 
 | Priority | Level |
 | Sprint | 1 |
