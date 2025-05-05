@@ -22,8 +22,7 @@ satellite can provide another method of estimating rainfall rates.
 
 > Table 1. Clouds and their classifications
 
-Clouds are classified by height and shape (Table 1). There are ten basic cloud types that are categorized 
-into three subclassifications based on their heights. Cirrus (Ci) 
+There are ten basic cloud types that are categorized into three subclassifications based on their heights (Table 1)(Study where I got table?). Cirrus (Ci), Cirrostratus (Cs), and Cirrocumulus (Cc) are high level-clouds. Low-level clouds consist of Cumulus (Cu), Stratocumulus (Sc), Stratus (St), Cumulonimbus (Sb), and Nimbostratus (Ns). Mid-level clouds consist of Altostratus (As) and Altocumulus (Ac). 
 
 
 The aim of this machine learner is not to predict the severity or convective mode produced, but 
@@ -183,6 +182,8 @@ The model was first given the original unlabeled image subset. The images were u
 Fu, Y., X. Mi, Z. Han, W. Zhang, Q. Liu, X. Gu, and T. Yu, 2023: A machine-learning-based study on all-day cloud classification using Himawari-8 infrared data. *Remote Sens.*, 15, 5630, https://doi.org/10.3390/rs15245630.
 
 Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learning Classification of Significant Tornadoes and Hail in the United States Using ERA5 Proximity Soundings. Wea. Forecasting, 36, 2143–2160, https://doi.org/10.1175/WAF-D-21-0056.1.
+
+WMO, 2017: Definitions of clouds. *International Cloud Atlas*, World Meteorological Organization, https://cloudatlas.wmo.int/en/clouds-definitions.html
 
 ## Appendix 
 
