@@ -96,8 +96,8 @@ Each dataset was saved to a folder in Google Drive. In total, 100 datasets were 
 2.  Preprocessing
 
 Each satellite image can be viewed by accessing a certain band and using ```matplotlib```'s ```imshow()``` to view. For example, looking at a random ABI band 13 image yields:
-![alt text](Figures/figure_1.png)
->Figure 1. CONUS ABI band 13 image.
+![alt text](Figures/figure_2.png)
+>Figure 2. CONUS ABI band 13 image.
 
 matplotlib's ```'gist_ncar_r'``` colormap was used due to its wide range of colors. 
 
@@ -172,8 +172,8 @@ The original plan was to train a convolutional neural network with 5,000 images 
 4.  Training and Validation
 
 Tensorflow's ```keras``` was used due to our familiarity with it. The model was trained on 100 epochs with a batch size of 32. 20% of the labeled images were used as validation. Before training, all images were normalized to obtain a value per pixel between 0 and 1. The dataframe containing the images was then split into two subsets; the labeled set and the unlabeled set. The labeled data was then given to the mode. The model had memorized the training data by the 16th epoch but was never able to break 90 % accuracy on the validation subset. Diminishing returns were present by around the 40th epoch, where the validation accuracy plateaued and then preceeded to get worse.
-![alt text](/Figures/figure_2.png)
->Figure 2. CNN training and validation accuracy w.r.t. epoch number.
+![alt text](/Figures/figure_3.png)
+>Figure 3. CNN training and validation accuracy w.r.t. epoch number.
 
 
 5.  Testing and Evaluation
@@ -183,25 +183,25 @@ The model was first given the original unlabeled image subset. The images were u
 
 ## 4. Results
 ### 4a. Model Performance
-![alt text](/Figures/figure_3.png)
->Figure 3. Sample predictions from the original unlabeled dataset.
-
-
 ![alt text](/Figures/figure_4.png)
->Figure 4. Sample Predictions from the second test dataset.
+>Figure 4. Sample predictions from the original unlabeled dataset.
+
+
+![alt text](/Figures/figure_5.png)
+>Figure 5. Sample Predictions from the second test dataset.
 
 The model's confidence for all classes was also assessed. 
 
-![alt text](/Figures/figure_5.png)
->Figure 5. Breakdown of the model's predictions as well as the portion of predictions where confidence was less than 80% (0.8).
+![alt text](/Figures/figure_6.png)
+>Figure 6. Breakdown of the model's predictions as well as the portion of predictions where confidence was less than 80% (0.8).
 
 The model had high confidence for most cumulus and stratus cases, however every single stratus case had a confidence of less than 80%. This is most likely due to the subjective nature of the classifications and the disparity between the number of occurrences of each feature in the dataset. 
 
-![alt text](/Figures/figure_6.png)
->Figure 6. Histograms showing the distribution of confidence for each classification made by the model on the first dataset.
-
 ![alt text](/Figures/figure_7.png)
->Figure 7. Histograms showing the distribution of confidence for each classification made by the model on the second dataset.
+>Figure 7. Histograms showing the distribution of confidence for each classification made by the model on the first dataset.
+
+![alt text](/Figures/figure_8.png)
+>Figure 8. Histograms showing the distribution of confidence for each classification made by the model on the second dataset.
 
 Both tests yielded similarly-shaped distributions, indicating that the model is at the very least, consistent. The total classifications for the unlabeled dataset were:
  	
