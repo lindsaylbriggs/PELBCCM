@@ -342,7 +342,7 @@ def download_files(number_of_files):
 
     print(f'Download complete: {num_files} files in {download_dir}')
 ```
-| PELBCCM-01  | `   
+| PELBCCM-01  | Save Satellite Cloud Features as PNG Images   
 |---------|------------| 
 | Priority Level:| Medium |
 | Sprint | 1 |
