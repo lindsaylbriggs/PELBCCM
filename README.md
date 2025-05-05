@@ -170,7 +170,9 @@ Tensorflow's ```keras``` was used due to our familiarity with it. The model was 
 
 5.  Testing and Evaluation
 
-The model was first given the 
+The model was first given the original unlabeled image subset. The images were un-normalized after being given a predicted label and the new predicted label was added to the dataframe. A function was written to display sample predictions for all three classes.
+
+![alt text](figure_3.png)
 
 
 ## 4. Results
