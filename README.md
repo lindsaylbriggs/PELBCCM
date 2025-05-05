@@ -249,15 +249,26 @@ WMO, 2017: Definitions of clouds. *International Cloud Atlas*, World Meteorologi
 ## Appendix 
 
 # Requirements Document (In progress)
-| PELBCCM-01  | `   
+| PELBCCM-01  | Select a Satellite Data Source for Cloud Classification`   
 |---------|------------| 
 | Priority Level:|Urgent |
 | Sprint | 1 |
 | Assigned To | Paul Eldridge |
-| User Story   | As a meteorologist, I want to be able to input a date and time and have the model classify the clouds found in the image.  |                                                                                                               
-| Requirements | The user can input a specific time (year, month, day, hour). This timestamp can then be passed into a function that downloads every longwave IR image taken during the hour. |
+| User Story   | As a data scientist, I need to identify a publicly available satellite data source so I can build and train a cloud classification model.  |                                                                                                               
+| Requirements |
+|| 1. The dataset must contain longwave infrared imagery (e.g., band 13) appropriate for meteorological analysis.|
+|| 2. The data must be accessible programmatically (e.g., via AWS S3, API, or FTP).|
+|| 3. Licensing must allow for use in academic or research contexts.|
+|| 4. The selected source should provide historical and near-real-time data.|
 | Acceptance Criteria | |
+|| 1. A data source is documented and its access method is tested.|
+|| 2. At least one example file is downloaded and confirmed to contain usable imagery.|
+|| 3. The access method (e.g., s3fs, xarray, requests) is confirmed to work in the project environment. |
+|| 4. Metadata and file structure are understood and documented for team use.|
 | Unit Test | | 
+```
+N/A
+```
 
 | PELBCCM-02  | Image Downloading   
 |---------|------------| 
