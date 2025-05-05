@@ -18,7 +18,7 @@ and are the source of precipitation (i.e. rain, snow, hail). Clouds give vital i
 and weather scientists of current conditions in the atmosphere. Identifying cloud types via 
 satellite can provide another method of estimating rainfall rates.
 
-!alt[text](cloud_table_fixed.png)
+!alt[text](images/cloud_table_fixed.png)
 
 Clouds and their classifications
 
