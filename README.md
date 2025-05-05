@@ -346,21 +346,82 @@ def download_files(number_of_files):
 |---------|------------| 
 | Priority | Level |
 | Sprint | 1 |
-| Assigned To | Name |
+| Assigned To | Lindsay |
 | User Story   | As a meteorologist, I want to be able to verify that the images are what I am expecting to 
 see. |                                                                                                                                       | 
 | Requirements | |
-| | 1. |
-| | 2.|
+| | 1. Users can load and view images from downloaded or uploaded sources.|
+| | 2. The interface must display both the processed image and original satellite data (e.g., GOES-16 IR).|
 | | 3. |
 | | 4. |
 | Acceptance Criteria | |
-| | 1. |
-| | 2. |
-| | 3. . |
+| | 1. Image files are loaded and visualized correctly using libraries like PIL, xarray, and matplotlib.|
+| | 2. A user can see both the labeled image and original satellite image side by side.|
+| | 3. Colormaps are applied properly and NaN/missing values are visible as gray or other distinguishable color. |
 | | 4. .|
 | Unit Test | | 
 ```
+cmap = cm['gist_ncar_r'].copy() # Colormap
+cmap.set_bad(color='gray') # Setting any missing/nan values to gray to make it look nice
+vmin = 200
+vmax = 320
+def label_random_image(df, num_labels):
 
+
+  label_max = 50
+  label_dict = {'1': 'Cumulus',
+                '2': 'Stratus',
+                '3': 'Cirrus'
+  }
+
+  for i in range(num_labels):
+
+    plt.clf()
+
+    label_counts = df['label'].value_counts()
+    unlabeled = df[df['label'].isnull()]
+
+    if unlabeled.empty:
+      print('All images labeled')
+      break
+    random_idx = random.choice(unlabeled.index)
+    random_img = df.loc[random_idx, 'Image']
+    name = df.loc[random_idx, 'name'].rsplit('/', 1)[1].rsplit('_', 2)[0]
+    fig, ax = plt.subplots(1, 2)
+    ax = ax.flatten()
+    ax[0].imshow(random_img)
+    original_dataset = xr.open_dataset(f'/content/drive/MyDrive/CCM/Datasets/{name}')
+    original_img = original_dataset['CMI_C13']
+    ax[1].imshow(original_img, cmap = cmap, vmin = vmin, vmax= vmax)
+    ax[1].axis('off')
+    ax[0].axis('off')
+
+    plt.show(block= False)
+
+    plt.pause(1)
+
+    label = input(f'Choose a label 1-3 or write skip: {list(label_dict.values())}').lower()
+
+    if label == 'skip':
+      continue
+
+    elif label in label_dict.keys():
+      label = label_dict[label]
+
+    else:
+      print('Invalid label')
+      continue
+
+    # Check that label category isn't full
+
+
+    df.loc[random_idx, 'label'] = label
+
+  df.to_pickle('labeled_image_list.pkl')
+  print('Labeling Complete')
+
+%matplotlib inline
+df = pd.read_pickle('drive/MyDrive/CCM/labeled_image_list.pkl')
+label_random_image(df, 20)
 
 ```
