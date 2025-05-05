@@ -254,8 +254,7 @@ WMO, 2017: Definitions of clouds. *International Cloud Atlas*, World Meteorologi
 | Priority Level:|Urgent |
 | Sprint | 1 |
 | Assigned To | Paul Eldridge |
-| User Story   | As a data scientist, I need to identify a publicly available satellite data source so I can build and train a cloud classification model.  |                                                                                                               
-| Requirements |
+| User Story   | As a data scientist, I need to identify a publicly available satellite data source so I can build and train a cloud classification model.  |                                | Requirements | |
 || 1. The dataset must contain longwave infrared imagery (e.g., band 13) appropriate for meteorological analysis.|
 || 2. The data must be accessible programmatically (e.g., via AWS S3, API, or FTP).|
 || 3. Licensing must allow for use in academic or research contexts.|
@@ -356,8 +355,9 @@ def download_files(number_of_files):
 | Priority Level:| Medium |
 | Sprint | 1 |
 | Assigned To | Lindsay |
-| User Story   | As a meteorologist, I want to extract and save distinct cloud features from satellite imagery as separate PNG files for later analysis and model training.  |               | Requirements | |                                                                                                
-| 1. It must extract longwave IR data from the CMI_C13 variable.|
+| User Story   | As a meteorologist, I want to extract and save distinct cloud features from satellite imagery as separate PNG files for later analysis and model training.|               
+| Requirements | |                                                                                                
+| | 1. It must extract longwave IR data from the CMI_C13 variable.|
 | | 2. The clean_CMI() function isolates significant cloud features.|
 | | 3. Each feature is resized (e.g., 128x128) using resize_features().|
 | | 4.Each cleaned feature is saved as a .png image using a consistent colormap (gist_ncar_r) with missing data shown as gray. |
