@@ -36,10 +36,10 @@ There are ten basic cloud types that are categorized into three sub classificati
 The Cirrus (Ci) genus is "composed of detached cirriform elements in the form of white, delicate filaments, of white (or mostly white) patches, or of narrow bands" (AMS 2024).
 
 
-Stratus 
+The Stratus (St) genus is characterized by its generally featureless-uniform base, and its appearance of being a long milky white-grey layer.  
 
 
-Cumulus (Cu) clouds are "individual, detached elements that are generally dense and posses sharp nonfibrous outlines" (AMS).
+Cumulus (Cu) clouds are "individual, detached elements that are generally dense and posses sharp nonfibrous outlines" (AMS 2024). Cu commonly grows into cumulunimbus or cumulus congestus, which then produce precipitation. 
 
 
 The aim of this machine learner is not to predict the severity or convective mode produced, but 
