@@ -33,11 +33,9 @@ There are ten basic cloud types that are categorized into three sub classificati
 
 > Figure 1.  Clouds and their classifications by height (WMO 2017).
 
-The Cirrus (Ci) genus is "composed of detached cirriform elements in the form of white, delicate filaments, of white (or mostly white) patches, or of narrow bands" (AMS 2024).
+The Cirrus (Ci) genus is "composed of detached cirriform elements in the form of white, delicate filaments, of white (or mostly white) patches, or of narrow bands" (AMS 2024). Ci are entirely made up of ice crystals. The extent of transparent appearance is dependant upon the degree of ice crystal seperation (NOAA 2023). 
 
-
-The Stratus (St) genus is characterized by its generally featureless-uniform base, and its appearance of being a long milky white-grey layer.  
-
+The Stratus (St) genus is characterized by its generally featureless-uniform base, and its appearance of being a long milky white-grey layer.  St can produce drizzle, ice prisms or snow grains if the cloud is thick enough (NOAA 2023)
 
 Cumulus (Cu) clouds are "individual, detached elements that are generally dense and posses sharp nonfibrous outlines" (AMS 2024). Cu commonly grows into cumulunimbus or cumulus congestus, which then produce precipitation. 
 
@@ -240,11 +238,14 @@ There are many things that can be done to improve the model.
 ## 5. References 
 
 AMS, 2024: Cirrus. Glossary of Meteorology, American Meteorological Society, https://glossary.ametsoc.org/wiki/Cirrus.
+
 AMS, 2024: Cumulus. Glossary of Meteorology, American Meteorological Society, https://glossary.ametsoc.org/wiki/Cumulus.
 
 Fu, Y., X. Mi, Z. Han, W. Zhang, Q. Liu, X. Gu, and T. Yu, 2023: A machine-learning-based study on all-day cloud classification using Himawari-8 infrared data. *Remote Sens.*, 15, 5630, https://doi.org/10.3390/rs15245630.
 
 Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learning Classification of Significant Tornadoes and Hail in the United States Using ERA5 Proximity Soundings. Wea. Forecasting, 36, 2143–2160, https://doi.org/10.1175/WAF-D-21-0056.1.
+
+NOAA, 2023: Ten Basic Clouds. JetStream: An Online School for Weather, *National Oceanic and Atmospheric Administration*, https://www.noaa.gov/jetstream/clouds/ten-basic-clouds.
 
 WMO, 2017: Clouds. International Cloud Atlas, World Meteorological Organization, https://cloudatlas.wmo.int/en/clouds.html.
 
