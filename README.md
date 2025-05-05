@@ -173,7 +173,7 @@ The model was first given the original unlabeled image subset. The images were u
 
 
 ## 4. Results
-
+### 4a. Model Performance
 ![alt text](/Figures/figure_3.png)
 >Figure 3. Sample predictions from the original unlabeled dataset.
 
@@ -212,6 +212,13 @@ For the second test dataset:
 |Cirrus|6
 >Table 3. Total classifications for the second unlabeled datast.
 
+### 4b. Work to be Continued
+
+There are many things that can be done to improve the model. 
+1. Re-write the download script:
+    - The download script fails to download datasets about half of the time. This is most likely because the script is running to fast and needs to be slowed down. The script can also be improved by downloading datasets in parallel as opposed to in series. This would shorten the time taken to run the script and allow for more files to be downloaded at a time.
+2. Improve feature filtering:
+    - The current feature filtering uses a mask that
 
 ## 5. References 
 
