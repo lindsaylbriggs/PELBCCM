@@ -155,19 +155,19 @@ for feature in features:
 ```
 Each feature was then converted to an image and stored in a folder on Google Drive. In total, 1047 initial images were created, and another 474 were created later for further testing. These images were then stored in a pandas ```DataFrame``` whiched was saved as a pickle in Google Drive.
 
-Due to time limitations, not every image was able to receive a label. However, about 100 images were labeled by opening the image and prompting the user to select a label: Cumulus, Stratus, or Cirrus. These classifications were highly subjective and may vary from user to user. This is a source of error within this project and will be adjusted later to make the labeling process more objective.
+Due to time limitations, not every image was able to receive a label. However, about 100 images were labeled by opening the image and prompting the user to select a label: Cumulus, Stratus, or Cirrus. These classifications were highly subjective and may vary from user to user. This is a source of error within this project and will be adjusted later to make the labeling process more objective. There exists an issue on Colab where matplotlib and the ```input()``` function do not work well together and periodically the webpage must be refreshed in order for the script to run normally. This significantly slowed down the labeling process.
 
-3.  Feature Engineering (?)
+3.  Model Selection
+   
+The original plan was to train a convolutional neural network with 5,000 images split into train, validation, and test datasets. Due to unforeseen circumstances, labeling 5,000 images on Colab was not able to be done and only about 100 images were labeled. In order to have some sort of deliverable, the decision was made to train a CNN with most of the small labeled subset and validate it with the rest of the labeled images. Then, the rest of the feature images could be passed in as a test with the model returning the image and it's highest confidence.  
 
-4.  Model Selection
-Two machine learning algorithms were used: K-Nearest Neighbors (KNN) and Random Forest (RF). RF has been shown to have strong performance in meteorological classifications (Gensini et al. 2021). 
-K-Nearest Neighbors 
+4.  Training and Validation
 
-Random Forest 
+Tensorflow's ```keras``` was used due to our familiarity with it. The model was trained on 100 epochs with a batch size of 32. 20% of the labeled images were used as validation. The model had memorized the training data by the 16th epoch but was never able to break 90 % accuracy on the validation subset. Diminishing returns were present by around the 40th epoch, where the validation accuracy plateaued and then preceeded to get worse.
+( 
 
-5.  Training and Validation
 
-6.  Testing and Evaluation
+5.  Testing and Evaluation
 
 
 
