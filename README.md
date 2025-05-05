@@ -18,14 +18,12 @@ and are the source of precipitation (i.e. rain, snow, hail). Clouds give vital i
 and weather scientists of current conditions in the atmosphere. Identifying cloud types via 
 satellite can provide another method of estimating rainfall rates.
 
-!alt[text](Figures/cloud_table_fixed.png)
+![alt text](Figures/cloud_table_fixed.png)
 
-Clouds and their classifications
+> Table 1. Clouds and their classifications
 
-Insert table here 
-
-Clouds are classified by height and shape. There are ten basic cloud types that are categorized 
-into three subclassifications based on their heights. 
+Clouds are classified by height and shape (Table 1). There are ten basic cloud types that are categorized 
+into three subclassifications based on their heights. Cirrus (Ci) 
 
 
 The aim of this machine learner is not to predict the severity or convective mode produced, but 
