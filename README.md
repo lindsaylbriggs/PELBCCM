@@ -163,12 +163,14 @@ The original plan was to train a convolutional neural network with 5,000 images 
 
 4.  Training and Validation
 
-Tensorflow's ```keras``` was used due to our familiarity with it. The model was trained on 100 epochs with a batch size of 32. 20% of the labeled images were used as validation. The model had memorized the training data by the 16th epoch but was never able to break 90 % accuracy on the validation subset. Diminishing returns were present by around the 40th epoch, where the validation accuracy plateaued and then preceeded to get worse.
-( 
+Tensorflow's ```keras``` was used due to our familiarity with it. The model was trained on 100 epochs with a batch size of 32. 20% of the labeled images were used as validation. Before training, all images were normalized to obtain a value per pixel between 0 and 1. The dataframe containing the images was then split into two subsets; the labeled set and the unlabeled set. The labeled data was then given to the mode. The model had memorized the training data by the 16th epoch but was never able to break 90 % accuracy on the validation subset. Diminishing returns were present by around the 40th epoch, where the validation accuracy plateaued and then preceeded to get worse.
+![alt text](/Figures/figure_2.png)
+>Figure 2. CNN training and validation accuracy w.r.t. epoch number.
 
 
 5.  Testing and Evaluation
 
+The model was first given the 
 
 
 ## 4. Results
