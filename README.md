@@ -83,13 +83,79 @@ GOES images are stored as netCDF files with each advanced baseline imager (ABI) 
  - Each ABI band (16 in total) and a quality flag for each band (16 in total).
  - Many more variables (124 total), including min/max brightness for each band, information about the satellite's position, etc. 
 
+Each dataset was saved to a folder in Google Drive. In total, 100 datasets were downloaded with an additional 45 downloaded at a later time for model testing. 
+
 2.  Preprocessing
 
 Each satellite image can be viewed by accessing a certain band and using ```matplotlib```'s ```imshow()``` to view. For example, looking at a random ABI band 13 image yields:
-img1.png
+![alt text](Figures/figure_1.png)
+>Figure 1. CONUS ABI band 13 image.
 
-NaNs existed within the raw data due to the angle of the satellite images. To mitigate, cloud features were extracted on colab using a temperature mask. Then a loop was used to save each individual cloud feature into a folder on a google drive to be used to train the model. These extracted features were then converted into a list of images using Panda, used to label each image as either Cumulus, Stratus, or Cirrus. Each image was then cropped to a set size to ensure uniformity.
+matplotlib's ```'gist_ncar_r'``` colormap was used due to its wide range of colors. 
 
+NaNs existed within the raw data due to the angle of the satellite images. To account for this, cloud features were extracted on colab using a temperature mask. This mask was set to filter out any temperatures greater than 270 Kelvin. To extract each cloud feature from the overall image, ```scipy's ndimage``` was used to find unique areas. 
+```
+dataset = xr.open_dataset('sample_dataset') # Open a sample dataset
+CMI = dataset.CMI_C13 # ABI Band 13
+
+cmap = cm['gist_ncar_r'].copy() # Colormap
+cmap.set_bad(color='gray') # Setting any missing/nan values to gray to make it look nice
+
+temperature_mask = CMI.where(CMI.data <= 270) # Masking any data points over 270 Kelvin. This should isolate any important cloud features.
+
+mask = CMI.data < 270 # Mask that works with scipy ```label``` function. This creates an array of True/False values.
+
+labeled_array, num_features = ndimage.label(mask) # Returns ```labeled_array```, which returns the array with each unique feature labeled with a different number. 
+# Also returns ```num_features```, which is the number of unique features found. 
+region_sizes = ndimage.sum_labels(mask, labeled_array, range(1, num_features + 1)) # Calculates the sum, or in this case, the "area", of each unique feature. 
+
+min_size = 5000 # Arbitrarily chosen minimum size
+region_mask = np.zeros_like(mask, dtype= bool) # Array with the same shape as our original array but with all Falses. This will be iterated over in order to flip needed values to True.
+
+for i, size in enumerate(region_sizes): # Loop through region sizes while keeping track of the index. If the feature is larger than the minimum size, ```region_mask```
+        if size >= min_size:            # is updated to True. 
+            region_mask = region_mask | (labeled_array == (i + 1))
+        
+cleaned_CMI = CMI.where(region_mask) # recreating our mask from before, now with only the large important features.
+
+filtered_labels, new_features = ndimage.label(region_mask) # Labeling unique features within our new filtered mask, similar to before. 
+features = [] # Creates an empty list that each unique feature will be stored in.
+
+for label in range(1, new_features + 1):  # Iterating through the number of unique features found.
+    feature_mask = filtered_labels == label # Creating a temporary array of True/False where only the feature with the number associated with ```label``` is labeled as "True".
+    
+    CMI_feature = CMI.where(feature_mask)  # Creates temporary mask that only lets the unique feature show.
+    
+    coords = np.argwhere(feature_mask) # Finds indicies of our feature.
+    ymin, xmin = coords.min(axis= 0) # Gives the minimum x and y values.
+    ymax, xmax = coords.max(axis= 0) + 1 # Gives the maximum x and y values.
+    
+    cropped = CMI_feature.isel(y= slice(ymin, ymax), x= slice(xmin, xmax)) # Slicing into dataarray with our x and y coordinates in order to isolate them. 
+    features.append(cropped) # Feature is added to our list. 
+```
+
+Each feature then needed to be resized to a desired shape in order to be passed into a CNN. Through testing, it was found that 128x128 pixels offered a good balance of feature preservation while not taking up too much space.
+
+```
+shape = 128 # Desired side length of image. We will make these square, so we only need the size of one side since they will all be the same.
+resized_features = [] # Empty list to store the resized features.
+
+for feature in features:
+    data = feature.data # Extract the values from each feature.
+    
+    if np.all(np.isnan(data)): # If entire feature is nan values, skip it. 
+        continue
+    
+    filled_data = np.nan_to_num(data) # Filling nan values within feature to numeric so they plot nicely.
+    zoom = (shape / filled_data.shape[0], shape / filled_data.shape[1]) # Zoom factor for each dimension. 
+    resized_data = ndimage.zoom(filled_data, zoom, order= 1) # Resizes the image. 
+    
+    resized_features.append(resized_data) # Add the resized image to the list.
+    
+```
+Each feature was then converted to an image and stored in a folder on Google Drive. In total, 1047 initial images were created, and another 474 were created later for further testing. These images were then stored in a pandas ```DataFrame``` whiched was saved as a pickle in Google Drive.
+
+Due to time limitations, not every image was able to receive a label. However, about 100 images were labeled by opening the image and prompting the user to select a label: Cumulus, Stratus, or Cirrus. These classifications were highly subjective and may vary from user to user. This is a source of error within this project and will be adjusted later to make the labeling process more objective.
 
 3.  Feature Engineering (?)
 
