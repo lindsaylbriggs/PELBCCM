@@ -23,7 +23,7 @@ A cloud is defined as “a hydrometeor consisting of minute particles of liquid 
 
 There are ten basic cloud types that are categorized into three sub classifications based on their heights (Table 1)(Study where I got table?). Cirrus (Ci), Cirrostratus (Cs), and Cirrocumulus (Cc) are high level-clouds. Low-level clouds consist of Cumulus (Cu), Stratocumulus (Sc), Stratus (St), Cumulonimbus (Sb), and Nimbostratus (Ns). Mid-level clouds consist of Altostratus (As) and Altocumulus (Ac) (Guzel et al. 2024).
 
-![alt text](Figures/useful_concepts.png)
+![alt text](Figures/figure_1.jpg)
 
 > Figure 1.  Clouds and their classifications by height (WMO 2017).
 
