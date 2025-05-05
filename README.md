@@ -169,12 +169,49 @@ Tensorflow's ```keras``` was used due to our familiarity with it. The model was 
 
 5.  Testing and Evaluation
 
-The model was first given the original unlabeled image subset. The images were un-normalized after being given a predicted label and the new predicted label was added to the dataframe. A function was written to display sample predictions for all three classes.
-
-![alt text](figure_3.png)
+The model was first given the original unlabeled image subset. The images were un-normalized after being given a predicted label and the new predicted label was added to the dataframe. A function was written to display sample predictions for all three classes. The model's confidence for each prediction was also kept and analyzed. 
 
 
 ## 4. Results
+
+![alt text](/Figures/figure_3.png)
+>Figure 3. Sample predictions from the original unlabeled dataset.
+
+
+![alt text](/Figures/figure_4.png)
+>Figure 4. Sample Predictions from the second test dataset.
+
+The model's confidence for all classes was also assessed. 
+
+![alt text](/Figures/figure_5.png)
+>Figure 5. Breakdown of the model's predictions as well as the portion of predictions where confidence was less than 80% (0.8).
+
+The model had high confidence for most cumulus and stratus cases, however every single stratus case had a confidence of less than 80%. This is most likely due to the subjective nature of the classifications and the disparity between the number of occurrences of each feature in the dataset. 
+
+![alt text](/Figures/figure_6.png)
+>Figure 6. Histograms showing the distribution of confidence for each classification made by the model on the first dataset.
+
+![alt text](/Figures/figure_7.png)
+>Figure 7. Histograms showing the distribution of confidence for each classification made by the model on the second dataset.
+
+Both tests yielded similarly-shaped distributions, indicating that the model is at the very least, consistent. The total classifications for the unlabeled dataset were:
+ 	
+|label|count|
+|-|-|
+|Cumulus |688|
+|Stratus|224|
+|Cirrus|9|
+>Table 2. Total classifications for the first unlabeled dataset.
+
+For the second test dataset:
+
+|label|count
+|-|-|
+|Cumulus|343
+|Stratus|125
+|Cirrus|6
+>Table 3. Total classifications for the second unlabeled datast.
+
 
 ## 5. References 
 
