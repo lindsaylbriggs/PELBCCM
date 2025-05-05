@@ -18,11 +18,28 @@ and are the source of precipitation (i.e. rain, snow, hail). Clouds give vital i
 and weather scientists of current conditions in the atmosphere. Identifying cloud types via 
 satellite can provide another method of estimating rainfall rates.
 
+### Definition of a cloud
+
+A cloud is defined as “a hydrometeor consisting of minute particles of liquid water or ice, or of both, suspended in the atmosphere and usually not touching the ground. It may also include larger particles of liquid water or ice, as well as non-aqueous liquid or solid particles such as those present in fumes, smoke or dust” (WMO 2017).
+
+
 ![alt text](Figures/cloud_table_fixed.png)
 
-> Table 1. Clouds and their classifications
+> Table 1. Clouds and their classifications. Adapted from Guzel et al. (2024).
 
-There are ten basic cloud types that are categorized into three subclassifications based on their heights (Table 1)(Study where I got table?). Cirrus (Ci), Cirrostratus (Cs), and Cirrocumulus (Cc) are high level-clouds. Low-level clouds consist of Cumulus (Cu), Stratocumulus (Sc), Stratus (St), Cumulonimbus (Sb), and Nimbostratus (Ns). Mid-level clouds consist of Altostratus (As) and Altocumulus (Ac). 
+There are ten basic cloud types that are categorized into three sub classifications based on their heights (Table 1)(Study where I got table?). Cirrus (Ci), Cirrostratus (Cs), and Cirrocumulus (Cc) are high level-clouds. Low-level clouds consist of Cumulus (Cu), Stratocumulus (Sc), Stratus (St), Cumulonimbus (Sb), and Nimbostratus (Ns). Mid-level clouds consist of Altostratus (As) and Altocumulus (Ac) (Guzel et al. 2024).
+
+![alt text](Figures/useful_concepts.jpg)
+
+> Figure 1.  Clouds and their classifications by height (WMO 2017).
+
+Cirrus 
+
+
+Stratus 
+
+
+Cumulus 
 
 
 The aim of this machine learner is not to predict the severity or convective mode produced, but 
