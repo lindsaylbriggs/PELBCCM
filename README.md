@@ -42,6 +42,9 @@ contrast during nighttime. This is where our second and third methods come into 
 training the CCM on satellite imagery, a product such as Long Wave Infrared, clouds would be 
 able to be depicted after nightfall to allow our model to function during dark hours.
 
+### Note:
+Due to unforseen circumstances toward the end of the semester, work on the model had to be halted for extended periods of time. This model is by all means a work in progress and will be updated as time goes on.
+
 ## 2. Literature 
 
 “A Machine-Learning-Based Study on All-Day Cloud Classification Using Himawari-8 Infrared Data”
@@ -254,23 +257,13 @@ WMO, 2017: Definitions of clouds. *International Cloud Atlas*, World Meteorologi
 # Requirements Document
 | PELBCCM-01  | `   
 |---------|------------| 
-| Priority | Level |
+| Priority Level:|Urgent |
 | Sprint | 1 |
-| Assigned To | Name |
-| User Story   |  |                                                                                                                                       | 
-| Requirements | |
-| | 1. |
-| | 2.|
-| | 3. |
-| | 4. |
+| Assigned To | Paul Eldridge |
+| User Story   | As a meteorologist, I want to be able to input a date and time and have the model classify the clouds found in the image.  |                                                                                                               
+| Requirements | The user can input a specific time (year, month, day, hour). This timestamp can then be passed into a function that downloads every longwave IR image taken during the hour. |
 | Acceptance Criteria | |
-| | 1. |
-| | 2. |
-| | 3. . |
-| | 4. .|
 | Unit Test | | 
-```
-```
 
 | PELBCCM-01  | Image Downloading   
 |---------|------------| 
