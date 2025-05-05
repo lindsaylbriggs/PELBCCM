@@ -342,6 +342,50 @@ def download_files(number_of_files):
 
     print(f'Download complete: {num_files} files in {download_dir}')
 ```
+| PELBCCM-01  | `   
+|---------|------------| 
+| Priority Level:| Medium |
+| Sprint | 1 |
+| Assigned To | Lindsay |
+| User Story   | As a meteorologist, I want to extract and save distinct cloud features from satellite imagery as separate PNG files for later analysis and model training.  |               | Requirements | |                                                                                                
+| 1. It must extract longwave IR data from the CMI_C13 variable.|
+| | 2. The clean_CMI() function isolates significant cloud features.|
+| | 3. Each feature is resized (e.g., 128x128) using resize_features().|
+| | 4.Each cleaned feature is saved as a .png image using a consistent colormap (gist_ncar_r) with missing data shown as gray. |
+| Acceptance Criteria | |
+| | 1. All netCDF files in the specified input directory are processed|
+| | 2. Each feature in CMI_C13 is saved as a .png with proper filename formatting.|
+| | 3.  Missing or invalid values in images are marked in gray.|
+| | 4. Output folder contains individual image files for each feature extracted.|
+| Unit Test | | 
+```
+def save_features(download_dir, output_folder):
+  '''
+  Opens each netCDF and saves each feature as a PNG.
+  '''
+  cmap = cm['gist_ncar_r'].copy() # Colormap
+  cmap.set_bad(color='gray') # Setting any missing/nan values to gray to make it look nice
+
+
+  files = next(os.walk(download_dir))[2]
+
+  for file in files:
+
+    dataset = xr.open_dataset(f'{download_dir}{file}')
+
+    CMI = dataset['CMI_C13']
+
+    features = clean_CMI(CMI)
+    resized_features = resize_features(features, 128)
+
+    for i, image in enumerate(resized_features):
+      plt.imsave(os.path.join(output_folder, f"{file}_feature_{i+1:02d}.png"), image, cmap=cmap, vmin=vmin, vmax=vmax)
+      print(f'{file}_feature_{i+1:02d}.png saved successfully')
+    print('All done!')
+
+
+```
+
 | PELBCCM-01  | The user can view the image(s) if necessary`   
 |---------|------------| 
 | Priority | Level |
