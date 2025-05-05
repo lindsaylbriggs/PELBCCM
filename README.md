@@ -27,12 +27,7 @@ There are ten basic cloud types that are categorized into three sub classificati
 
 > Figure 1.  Clouds and their classifications by height (WMO 2017).
 
-The Cirrus (Ci) genus is "composed of detached cirriform elements in the form of white, delicate filaments, of white (or mostly white) patches, or of narrow bands" (AMS 2024). Ci are entirely made up of ice crystals. The extent of transparent appearance is dependant upon the degree of ice crystal seperation (NOAA 2023). 
-
-The Stratus (St) genus is characterized by its generally featureless-uniform base, and its appearance of being a long milky white-grey layer.  St can produce drizzle, ice prisms or snow grains if the cloud is thick enough (NOAA 2023)
-
-Cumulus (Cu) clouds are "individual, detached elements that are generally dense and posses sharp nonfibrous outlines" (AMS 2024). Cu commonly grows into cumulunimbus or cumulus congestus, which then produce precipitation. 
-
+The Cirrus (Ci) genus is "composed of detached cirriform elements in the form of white, delicate filaments, of white (or mostly white) patches, or of narrow bands" (AMS 2024). Ci are entirely made up of ice crystals. The extent of transparent appearance is dependant upon the degree of ice crystal seperation (NOAA 2023). The Stratus (St) genus is characterized by its generally featureless-uniform base, and its appearance of being a long milky white-grey layer.  St can produce drizzle, ice prisms or snow grains if the cloud is thick enough (NOAA 2023). Cumulus (Cu) clouds are "individual, detached elements that are generally dense and posses sharp nonfibrous outlines" (AMS 2024). Cu commonly grows into cumulunimbus or cumulus congestus, which then produce precipitation. 
 
 The aim of this machine learner is not to predict the severity or convective mode produced, but 
 rather to identify the type of cloud depicted in satellite imagery. Machine learning can be trained to recognize cloud types from different sources such as ground 
@@ -47,8 +42,7 @@ Due to unforseen circumstances toward the end of the semester, work on the model
 
 ## 2. Literature 
 
-“A Machine-Learning-Based Study on All-Day Cloud Classification Using Himawari-8 Infrared Data”
-“Cloud type classification using deep learning with cloud images” The dataset in this study comprised of 11 folders of pictures, representing a cloud type, the 
+The dataset within the study “Cloud type classification using deep learning with cloud images”  comprised of 11 folders of pictures, representing a cloud type, the 
 eleventh type being contrails. Contrails were included due to similarities in appearance from 
 ground observations. There was a total of 2,543 images. The dataset split consisted of 70% 
 training, 20% validation, and 10% for the test dataset. Their split was random but maintained 
@@ -58,12 +52,9 @@ This study used data from the Himawari-8 satellite and the cloud type product 2B
 LIDAR. 130 days of data were selected from the months November 2018, January 2019, March 
 2019, June 2019, and July 2019. The Himawari-8 CLTYPE products encompassed ten cloud 
 types (clear-sky (Clear), cirrus (Ci), deep convective (Dc), altostratus (As), altocumulus (Ac), 
-nimbostratus (Ns), stratocumulus (Sc), stratus (St), and cumulus (Cu)). CPR/CALIOP products 
+nimbostratus (Ns), stratocumulus (Sc), stratus (St), and cumulus (Cu)). CPR/CALIOP products consisted of 9 types. For the purpose of consistency, clouds were classified into 9 types, merging 
+Ci and Cs. Cu has the poorest classification performance during daytime and nighttime (Fu, Y., et al 2023). 
 
-consisted of 9 types. For the purpose of consistency, clouds were classified into 9 types, merging 
-Ci and Cs. Cu has the poorest classification performance during daytime and nighttime. 
-
-1. 
 https://github.com/tpmao/cloud-classification-data
 
 The cloud classification model was based off data from Geostationary Operational Enviromental 
@@ -245,6 +236,8 @@ AMS, 2024: Cumulus. Glossary of Meteorology, American Meteorological Society, ht
 Fu, Y., X. Mi, Z. Han, W. Zhang, Q. Liu, X. Gu, and T. Yu, 2023: A machine-learning-based study on all-day cloud classification using Himawari-8 infrared data. *Remote Sens.*, 15, 5630, https://doi.org/10.3390/rs15245630.
 
 Gensini, V. A., C. Converse, W. S. Ashley, and M. Taszarek, 2021: Machine Learning Classification of Significant Tornadoes and Hail in the United States Using ERA5 Proximity Soundings. Wea. Forecasting, 36, 2143–2160, https://doi.org/10.1175/WAF-D-21-0056.1.
+
+Guzel M, Kalkan M, Bostanci E, Acici K, Asuroglu T. Cloud type classification using deep learning with cloud images. PeerJ Comput Sci. 2024 Jan 3;10:e1779. doi: 10.7717/peerj-cs.1779. PMID: 38196950; PMCID: PMC10773838.
 
 NOAA, 2023: Ten Basic Clouds. JetStream: An Online School for Weather, *National Oceanic and Atmospheric Administration*, https://www.noaa.gov/jetstream/clouds/ten-basic-clouds.
 
