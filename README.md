@@ -1,9 +1,3 @@
-Submit a link to your group project code on github. I am expecting functions with docstrings and at least 5 examples of unit tests of those functions. The tested functions do not have to be overly complicated, but you should be able to tell me, in the code, what acceptance criteria (from your requirements document) is being met by this successful test.
-
-
-
-Your "README" file should include your project summary, fixed rough draft, and a description of the notebooks or python scripts that are included on your github page. You can use this page as an example: SVRIMG/README.md at master · ahaberlie/SVRIMG · GitHub. If you click on "raw", it will show you the markdown code and how to embed images, make headers, etc. You can copy and paste aspects of this readme and modify the text and use your own figures / demonstration pictures (I would suggest making an 'img' folder in your github project: SVRIMG/img at master · ahaberlie/SVRIMG · GitHub).
-
 # Machine Learning Cloud Classification using Satellite Imagery 
 
 Authors: Paul Eldridge and Lindsay Briggs 
@@ -233,8 +227,12 @@ There are many things that can be done to improve the model.
 1. Re-write the download script:
     - The download script fails to download datasets about half of the time. This is most likely because the script is running to fast and needs to be slowed down. The script can also be improved by downloading datasets in parallel as opposed to in series. This would shorten the time taken to run the script and allow for more files to be downloaded at a time.
 2. Improve feature filtering:
-    - The current feature filtering uses a mask that
-
+    - The current feature filtering uses a mask that filters out any pixels greater than 270 K. Research on our end must be done to figure out either: a) A different temperature threshold to better capture cirrus clouds, or: b) A new way to filter out individual cloud types, separating different cloud types from within individual features.
+3. Streamline the labeling process:
+    - The current labeling method is extremely subjective and must ignore cloud types that are not the most prominent feature in an image. Some features need to be filtered out because they are not fully captured by the satellite (the feature is partially on the non-visible side of the globe). Parameters need to be determined on how to classify the images. More work needs to be put into the labeling script to either work better on Colab or to be moved to a local environment where the issue described with Colab and matplotlib does not happen.
+4.  Fine-tune the model:
+     - The current model was not modified in any way after its initialization. With more time, work can be done on the model to add more convolutional layers and optimize other areas such as the optimal number of epochs.
+ 
 ## 5. References 
 
 AMS, 2024: Cirrus. Glossary of Meteorology, American Meteorological Society, https://glossary.ametsoc.org/wiki/Cirrus.
